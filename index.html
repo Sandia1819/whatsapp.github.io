@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot de WhatsApp</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        #chat-container {
+            height: 300px;
+            overflow-y: scroll;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        #name-input, #career-input, #phone-input, #message-input {
+            width: calc(100% - 70px);
+            margin-bottom: 10px;
+            padding: 5px;
+        }
+
+        button {
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Chatbot de WhatsApp</h1>
+
+    <form id="user-info-form">
+        <input type="text" id="name-input" placeholder="Tu nombre completo">
+        <input type="text" id="career-input" placeholder="Tu carrera">
+        <input type="tel" id="phone-input" placeholder="Tu número de teléfono">
+        <textarea id="message-input" placeholder="Escribe tu mensaje..."></textarea>
+        <button type="submit">Enviar</button>
+    </form>
+
+    <script>
+        document.getElementById("user-info-form").addEventListener("submit", function (event) {
+            event.preventDefault();
+            var name = document.getElementById("name-input").value;
+            var career = document.getElementById("career-input").value;
+            var phone = document.getElementById("phone-input").value;
+            var message = document.getElementById("message-input").value;
+            var whatsappLink = "https://api.whatsapp.com/send?phone=528281737895&text=Nombre: " + name + "%0ACarrera: " + career + "%0ATeléfono: " + phone + "%0AMensaje: " + encodeURIComponent(message);
+            window.open(whatsappLink, "_blank");
+        });
+    </script>
+
+</body>
+</html>
